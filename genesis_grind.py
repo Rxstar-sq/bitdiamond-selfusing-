@@ -26,7 +26,7 @@ tx += b'\x00'*32 + struct.pack('<I', 0xffffffff)
 tx += varint(len(script_sig)) + script_sig
 tx += struct.pack('<I', 0xffffffff)
 tx += varint(1)
-tx += struct.pack('<q', 30000000*100000000)
+tx += struct.pack('<q', 300*100000000)
 tx += varint(len(script_pubkey)) + script_pubkey
 tx += struct.pack('<I', 0)
 
@@ -34,7 +34,7 @@ merkle = dsha(tx)
 merkle_hex = merkle[::-1].hex()
 
 nVersion = 1
-nBits = 0x207fffff  # RegTest difficulty (very low, instant)
+nBits = 0x1d0fffff  # RegTest difficulty (very low, instant)
 nTime = 1231006505
 nonce = 0
 

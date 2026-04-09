@@ -93,7 +93,8 @@ public:
         consensus.CSVHeight = 419328; // 000000000000000004a1b34462cb8aeebd5799177f7a29cf28f2d1961716b5b5
         consensus.SegwitHeight = 481824; // 0000000000000000001c8018d9cb3b742ef25114f27563e3fc4a1902167f9893
         consensus.MinBIP9WarningHeight = 711648; // taproot activation height + miner confirmation window
-        consensus.powLimit = uint256();
+        consensus.powLimit = uint256::FromHex("0000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffff").value();
+        //consensus.powLimit = uint256();
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -123,10 +124,10 @@ public:
         m_assumed_blockchain_size = 856;
         m_assumed_chain_state_size = 14;
 
-        genesis = CreateGenesisBlock(1231006505, 1, 0x207fffff, 1, 30000000 * COIN);
+        genesis = CreateGenesisBlock(1231006505, 310592419, 0x1d0fffff, 1, 300 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock.GetHex() == "4728a4bc1745fab38cb9056590d2876e34106e4d52b9280c7b135316b31de260");
-        assert(genesis.hashMerkleRoot.GetHex() == "455bada8f19dd7f6ff5917f3f2cd32ff36a841998fe5abcabd4912fccc8399c3");
+        assert(consensus.hashGenesisBlock.GetHex() == "0000000cfc78193d1ec2e3127c118b3abaff1b44fd2b39dbf8562b5e7f4f4b28");
+        assert(genesis.hashMerkleRoot.GetHex() == "8d811db2f3b17d52a4953d42391b86c0a611b69ecfa4dcbfe3c1524fe244c82a");
 
 
         // Note that of those which support the service bits prefix, most only support a subset of
@@ -194,7 +195,8 @@ public:
         consensus.CSVHeight = 770112; // 00000000025e930139bac5c6c31a403776da130831ab85be56578f3fa75369bb
         consensus.SegwitHeight = 834624; // 00000000002b980fcd729daaa248fd9316a5200e9b367f4ff2c42453e84201ca
         consensus.MinBIP9WarningHeight = 2013984; // taproot activation height + miner confirmation window
-        consensus.powLimit = uint256();
+        consensus.powLimit = uint256::FromHex("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").value();
+        //consensus.powLimit = uint256();
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -278,7 +280,8 @@ public:
         consensus.CSVHeight = 1;
         consensus.SegwitHeight = 1;
         consensus.MinBIP9WarningHeight = 0;
-        consensus.powLimit = uint256();
+        consensus.powLimit = uint256::FromHex("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").value();
+        //consensus.powLimit = uint256();
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -466,7 +469,7 @@ public:
         m_chain_type = ChainType::REGTEST;
         consensus.signet_blocks = false;
         consensus.signet_challenge.clear();
-        consensus.nSubsidyHalvingInterval = 300;
+        consensus.nSubsidyHalvingInterval = 150;
         consensus.BIP34Height = 1; // Always active unless overridden
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 1;  // Always active unless overridden
@@ -474,7 +477,8 @@ public:
         consensus.CSVHeight = 1;    // Always active unless overridden
         consensus.SegwitHeight = 0; // Always active unless overridden
         consensus.MinBIP9WarningHeight = 0;
-        consensus.powLimit = uint256();
+        consensus.powLimit = uint256::FromHex("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").value();
+        //consensus.powLimit = uint256();
         consensus.nPowTargetTimespan = 24 * 60 * 60; // one day
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -526,10 +530,10 @@ public:
             consensus.vDeployments[deployment_pos].min_activation_height = version_bits_params.min_activation_height;
         }
 
-        genesis = CreateGenesisBlock(1231006505, 1, 0x207fffff, 1, 30000000 * COIN);
+        genesis = CreateGenesisBlock(1231006505, 0, 0x207fffff, 1, 300 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock.GetHex() == "4728a4bc1745fab38cb9056590d2876e34106e4d52b9280c7b135316b31de260");
-        assert(genesis.hashMerkleRoot.GetHex() == "455bada8f19dd7f6ff5917f3f2cd32ff36a841998fe5abcabd4912fccc8399c3");
+        assert(consensus.hashGenesisBlock.GetHex() == "09e0ccff2e69611521b989fcc3deef312b129998e91a53de6a786452f1402083");
+        assert(genesis.hashMerkleRoot.GetHex() == "8d811db2f3b17d52a4953d42391b86c0a611b69ecfa4dcbfe3c1524fe244c82a");
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();
